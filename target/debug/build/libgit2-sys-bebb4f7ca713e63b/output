@@ -1,0 +1,1018 @@
+cargo:rerun-if-env-changed=LIBGIT2_NO_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG_aarch64-apple-darwin
+cargo:rerun-if-env-changed=PKG_CONFIG_aarch64_apple_darwin
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG
+cargo:rerun-if-env-changed=LIBGIT2_STATIC
+cargo:rerun-if-env-changed=LIBGIT2_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_STATIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_aarch64-apple-darwin
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_aarch64_apple_darwin
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_aarch64-apple-darwin
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_aarch64_apple_darwin
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_aarch64-apple-darwin
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_aarch64_apple_darwin
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_SYSROOT_DIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR
+cargo:rustc-cfg=libgit2_vendored
+libgit2/include/git2.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2.h
+libgit2/include/git2/signature.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/signature.h
+libgit2/include/git2/oid.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/oid.h
+libgit2/include/git2/index.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/index.h
+libgit2/include/git2/email.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/email.h
+libgit2/include/git2/ignore.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/ignore.h
+libgit2/include/git2/attr.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/attr.h
+libgit2/include/git2/blame.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/blame.h
+libgit2/include/git2/oidarray.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/oidarray.h
+libgit2/include/git2/pack.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/pack.h
+libgit2/include/git2/revert.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/revert.h
+libgit2/include/git2/version.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/version.h
+libgit2/include/git2/odb.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/odb.h
+libgit2/include/git2/status.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/status.h
+libgit2/include/git2/net.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/net.h
+libgit2/include/git2/tag.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/tag.h
+libgit2/include/git2/annotated_commit.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/annotated_commit.h
+libgit2/include/git2/config.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/config.h
+libgit2/include/git2/branch.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/branch.h
+libgit2/include/git2/types.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/types.h
+libgit2/include/git2/repository.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/repository.h
+libgit2/include/git2/clone.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/clone.h
+libgit2/include/git2/global.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/global.h
+libgit2/include/git2/blob.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/blob.h
+libgit2/include/git2/cherrypick.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/cherrypick.h
+libgit2/include/git2/mailmap.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/mailmap.h
+libgit2/include/git2/submodule.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/submodule.h
+libgit2/include/git2/errors.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/errors.h
+libgit2/include/git2/message.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/message.h
+libgit2/include/git2/merge.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/merge.h
+libgit2/include/git2/pathspec.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/pathspec.h
+libgit2/include/git2/tree.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/tree.h
+libgit2/include/git2/odb_backend.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/odb_backend.h
+libgit2/include/git2/graph.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/graph.h
+libgit2/include/git2/describe.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/describe.h
+libgit2/include/git2/rebase.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/rebase.h
+libgit2/include/git2/worktree.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/worktree.h
+libgit2/include/git2/stash.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/stash.h
+libgit2/include/git2/remote.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/remote.h
+libgit2/include/git2/strarray.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/strarray.h
+libgit2/include/git2/reflog.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/reflog.h
+libgit2/include/git2/cred_helpers.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/cred_helpers.h
+libgit2/include/git2/buffer.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/buffer.h
+libgit2/include/git2/diff.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/diff.h
+libgit2/include/git2/sys/index.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/index.h
+libgit2/include/git2/sys/email.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/email.h
+libgit2/include/git2/sys/config.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/config.h
+libgit2/include/git2/sys/path.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/path.h
+libgit2/include/git2/sys/repository.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/repository.h
+libgit2/include/git2/sys/openssl.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/openssl.h
+libgit2/include/git2/sys/midx.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/midx.h
+libgit2/include/git2/sys/cred.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/cred.h
+libgit2/include/git2/sys/merge.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/merge.h
+libgit2/include/git2/sys/stream.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/stream.h
+libgit2/include/git2/sys/odb_backend.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/odb_backend.h
+libgit2/include/git2/sys/remote.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/remote.h
+libgit2/include/git2/sys/reflog.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/reflog.h
+libgit2/include/git2/sys/diff.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/diff.h
+libgit2/include/git2/sys/commit_graph.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/commit_graph.h
+libgit2/include/git2/sys/transport.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/transport.h
+libgit2/include/git2/sys/hashsig.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/hashsig.h
+libgit2/include/git2/sys/credential.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/credential.h
+libgit2/include/git2/sys/refs.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/refs.h
+libgit2/include/git2/sys/filter.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/filter.h
+libgit2/include/git2/sys/alloc.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/alloc.h
+libgit2/include/git2/sys/mempack.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/mempack.h
+libgit2/include/git2/sys/commit.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/commit.h
+libgit2/include/git2/sys/refdb_backend.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/sys/refdb_backend.h
+libgit2/include/git2/trace.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/trace.h
+libgit2/include/git2/common.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/common.h
+libgit2/include/git2/proxy.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/proxy.h
+libgit2/include/git2/indexer.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/indexer.h
+libgit2/include/git2/refspec.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/refspec.h
+libgit2/include/git2/notes.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/notes.h
+libgit2/include/git2/cert.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/cert.h
+libgit2/include/git2/deprecated.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/deprecated.h
+libgit2/include/git2/transport.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/transport.h
+libgit2/include/git2/revwalk.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/revwalk.h
+libgit2/include/git2/patch.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/patch.h
+libgit2/include/git2/object.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/object.h
+libgit2/include/git2/checkout.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/checkout.h
+libgit2/include/git2/apply.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/apply.h
+libgit2/include/git2/revparse.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/revparse.h
+libgit2/include/git2/credential_helpers.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/credential_helpers.h
+libgit2/include/git2/credential.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/credential.h
+libgit2/include/git2/refs.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/refs.h
+libgit2/include/git2/reset.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/reset.h
+libgit2/include/git2/filter.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/filter.h
+libgit2/include/git2/transaction.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/transaction.h
+libgit2/include/git2/stdint.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/stdint.h
+libgit2/include/git2/commit.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/commit.h
+libgit2/include/git2/refdb.h => /Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/include/git2/refdb.h
+TARGET = Some(aarch64-apple-darwin)
+OPT_LEVEL = Some(0)
+HOST = Some(aarch64-apple-darwin)
+cargo:rerun-if-env-changed=CC_aarch64-apple-darwin
+CC_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CC_aarch64_apple_darwin
+CC_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+RUSTC_WRAPPER = Some(/Users/sangambiradar/.vscode/extensions/rust-lang.rust-analyzer-0.3.2020-darwin-arm64/server/rust-analyzer)
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=MACOSX_DEPLOYMENT_TARGET
+MACOSX_DEPLOYMENT_TARGET = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64-apple-darwin
+CFLAGS_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64_apple_darwin
+CFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:warning=libgit2/src/streams/stransport.c:63:8: warning: 'SSLHandshake' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        ret = SSLHandshake(st->ctx);
+cargo:warning=              ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1641:1: note: 'SSLHandshake' has been explicitly marked deprecated here
+cargo:warning=SSLHandshake                            (SSLContextRef          context)
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:69:13: warning: 'SSLCopyPeerTrust' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SSLCopyPeerTrust(st->ctx, &trust)) != noErr)
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1261:1: note: 'SSLCopyPeerTrust' has been explicitly marked deprecated here
+cargo:warning=SSLCopyPeerTrust                        (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:75:13: warning: 'SecTrustEvaluate' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SecTrustEvaluate(trust, &sec_res)) != noErr)
+cargo:warning=                   ^~~~~~~~~~~~~~~~
+cargo:warning=                   SecTrustEvaluateWithError
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecTrust.h:364:10: note: 'SecTrustEvaluate' has been explicitly marked deprecated here
+cargo:warning=OSStatus SecTrustEvaluate(SecTrustRef trust, SecTrustResultType *result)
+cargo:warning=         ^
+cargo:warning=libgit2/src/streams/stransport.c:107:13: warning: 'SSLCopyPeerTrust' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SSLCopyPeerTrust(st->ctx, &trust)) != noErr)
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1261:1: note: 'SSLCopyPeerTrust' has been explicitly marked deprecated here
+cargo:warning=SSLCopyPeerTrust                        (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:110:13: warning: 'SecTrustGetCertificateAtIndex' is deprecated: first deprecated in macOS 12.0 [-Wdeprecated-declarations]
+cargo:warning=        sec_cert = SecTrustGetCertificateAtIndex(trust, 0);
+cargo:warning=                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cargo:warning=                   SecTrustCopyCertificateChain
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecTrust.h:523:19: note: 'SecTrustGetCertificateAtIndex' has been explicitly marked deprecated here
+cargo:warning=SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust, CFIndex ix)
+cargo:warning=                  ^
+cargo:warning=libgit2/src/streams/stransport.c:167:13: warning: 'SSLWrite' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SSLWrite(st->ctx, data, data_len, &processed)) != noErr)
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1670:1: note: 'SSLWrite' has been explicitly marked deprecated here
+cargo:warning=SSLWrite                                        (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:214:13: warning: 'SSLRead' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SSLRead(st->ctx, data, len, &processed)) != noErr)
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1689:1: note: 'SSLRead' has been explicitly marked deprecated here
+cargo:warning=SSLRead                                         (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:225:8: warning: 'SSLClose' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        ret = SSLClose(st->ctx);
+cargo:warning=              ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:1731:1: note: 'SSLClose' has been explicitly marked deprecated here
+cargo:warning=SSLClose                                        (SSLContextRef          context)
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:264:12: warning: 'SSLCreateContext' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        st->ctx = SSLCreateContext(NULL, kSSLClientSide, kSSLStreamType);
+cargo:warning=                  ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:316:1: note: 'SSLCreateContext' has been explicitly marked deprecated here
+cargo:warning=SSLCreateContext(CFAllocatorRef __nullable alloc, SSLProtocolSide protocolSide, SSLConnectionType connectionType)
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:264:35: warning: 'kSSLClientSide' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=        st->ctx = SSLCreateContext(NULL, kSSLClientSide, kSSLStreamType);
+cargo:warning=                                         ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:218:5: note: 'kSSLClientSide' has been explicitly marked deprecated here
+cargo:warning=    kSSLClientSide CF_ENUM_DEPRECATED(10_2, 10_15, 2_0, 13_0)
+cargo:warning=    ^
+cargo:warning=libgit2/src/streams/stransport.c:264:51: warning: 'kSSLStreamType' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=        st->ctx = SSLCreateContext(NULL, kSSLClientSide, kSSLStreamType);
+cargo:warning=                                                         ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:223:5: note: 'kSSLStreamType' has been explicitly marked deprecated here
+cargo:warning=    kSSLStreamType CF_ENUM_DEPRECATED(10_2, 10_15, 2_0, 13_0),
+cargo:warning=    ^
+cargo:warning=libgit2/src/streams/stransport.c:271:13: warning: 'SSLSetIOFuncs' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=        if ((ret = SSLSetIOFuncs(st->ctx, read_cb, write_cb)) != noErr ||
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:418:1: note: 'SSLSetIOFuncs' has been explicitly marked deprecated here
+cargo:warning=SSLSetIOFuncs                           (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:272:13: warning: 'SSLSetConnection' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetConnection(st->ctx, st->io)) != noErr ||
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:657:1: note: 'SSLSetConnection' has been explicitly marked deprecated here
+cargo:warning=SSLSetConnection                        (SSLContextRef                  context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:273:13: warning: 'SSLSetSessionOption' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetSessionOption(st->ctx, kSSLSessionOptionBreakOnServerAuth, true)) != noErr ||
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:384:1: note: 'SSLSetSessionOption' has been explicitly marked deprecated here
+cargo:warning=SSLSetSessionOption                     (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:273:42: warning: 'kSSLSessionOptionBreakOnServerAuth' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetSessionOption(st->ctx, kSSLSessionOptionBreakOnServerAuth, true)) != noErr ||
+cargo:warning=                                                ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:99:2: note: 'kSSLSessionOptionBreakOnServerAuth' has been explicitly marked deprecated here
+cargo:warning=        kSSLSessionOptionBreakOnServerAuth CF_ENUM_DEPRECATED(10_2, 10_15, 2_0, 13_0) = 0,
+cargo:warning=        ^
+cargo:warning=libgit2/src/streams/stransport.c:274:13: warning: 'SSLSetProtocolVersionMin' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetProtocolVersionMin(st->ctx, kTLSProtocol1)) != noErr ||
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:458:1: note: 'SSLSetProtocolVersionMin' has been explicitly marked deprecated here
+cargo:warning=SSLSetProtocolVersionMin  (SSLContextRef      context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:274:47: warning: 'kTLSProtocol1' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetProtocolVersionMin(st->ctx, kTLSProtocol1)) != noErr ||
+cargo:warning=                                                     ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecProtocolTypes.h:157:5: note: 'kTLSProtocol1' has been explicitly marked deprecated here
+cargo:warning=    kTLSProtocol1 CF_ENUM_DEPRECATED(10_2, 10_15, 5_0, 13_0) = 4,
+cargo:warning=    ^
+cargo:warning=libgit2/src/streams/stransport.c:275:13: warning: 'SSLSetProtocolVersionMax' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetProtocolVersionMax(st->ctx, kTLSProtocol12)) != noErr ||
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:494:1: note: 'SSLSetProtocolVersionMax' has been explicitly marked deprecated here
+cargo:warning=SSLSetProtocolVersionMax  (SSLContextRef      context,
+cargo:warning=^
+cargo:warning=libgit2/src/streams/stransport.c:275:47: warning: 'kTLSProtocol12' is deprecated: first deprecated in macOS 10.15 [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetProtocolVersionMax(st->ctx, kTLSProtocol12)) != noErr ||
+cargo:warning=                                                     ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecProtocolTypes.h:159:5: note: 'kTLSProtocol12' has been explicitly marked deprecated here
+cargo:warning=    kTLSProtocol12 CF_ENUM_DEPRECATED(10_2, 10_15, 5_0, 13_0) = 8,
+cargo:warning=    ^
+cargo:warning=libgit2/src/streams/stransport.c:276:13: warning: 'SSLSetPeerDomainName' is deprecated: first deprecated in macOS 10.15 - No longer supported. Use Network.framework. [-Wdeprecated-declarations]
+cargo:warning=            (ret = SSLSetPeerDomainName(st->ctx, host, strlen(host))) != noErr) {
+cargo:warning=                   ^
+cargo:warning=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h:686:1: note: 'SSLSetPeerDomainName' has been explicitly marked deprecated here
+cargo:warning=SSLSetPeerDomainName            (SSLContextRef          context,
+cargo:warning=^
+cargo:warning=20 warnings generated.
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:rerun-if-env-changed=AR_aarch64-apple-darwin
+AR_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=AR_aarch64_apple_darwin
+AR_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64-apple-darwin
+ARFLAGS_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64_apple_darwin
+ARFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rustc-link-lib=static=git2
+cargo:rustc-link-search=native=/Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out/build
+cargo:root=/Users/sangambiradar/Documents/GitHub/ContainerBOM/target/debug/build/libgit2-sys-bebb4f7ca713e63b/out
+cargo:rustc-link-lib=iconv
+cargo:rustc-link-lib=framework=Security
+cargo:rustc-link-lib=framework=CoreFoundation
+cargo:rerun-if-changed=libgit2/include/git2.h
+cargo:rerun-if-changed=libgit2/include/git2/signature.h
+cargo:rerun-if-changed=libgit2/include/git2/oid.h
+cargo:rerun-if-changed=libgit2/include/git2/index.h
+cargo:rerun-if-changed=libgit2/include/git2/email.h
+cargo:rerun-if-changed=libgit2/include/git2/ignore.h
+cargo:rerun-if-changed=libgit2/include/git2/attr.h
+cargo:rerun-if-changed=libgit2/include/git2/blame.h
+cargo:rerun-if-changed=libgit2/include/git2/oidarray.h
+cargo:rerun-if-changed=libgit2/include/git2/pack.h
+cargo:rerun-if-changed=libgit2/include/git2/revert.h
+cargo:rerun-if-changed=libgit2/include/git2/version.h
+cargo:rerun-if-changed=libgit2/include/git2/odb.h
+cargo:rerun-if-changed=libgit2/include/git2/status.h
+cargo:rerun-if-changed=libgit2/include/git2/net.h
+cargo:rerun-if-changed=libgit2/include/git2/tag.h
+cargo:rerun-if-changed=libgit2/include/git2/annotated_commit.h
+cargo:rerun-if-changed=libgit2/include/git2/config.h
+cargo:rerun-if-changed=libgit2/include/git2/branch.h
+cargo:rerun-if-changed=libgit2/include/git2/types.h
+cargo:rerun-if-changed=libgit2/include/git2/repository.h
+cargo:rerun-if-changed=libgit2/include/git2/clone.h
+cargo:rerun-if-changed=libgit2/include/git2/global.h
+cargo:rerun-if-changed=libgit2/include/git2/blob.h
+cargo:rerun-if-changed=libgit2/include/git2/cherrypick.h
+cargo:rerun-if-changed=libgit2/include/git2/mailmap.h
+cargo:rerun-if-changed=libgit2/include/git2/submodule.h
+cargo:rerun-if-changed=libgit2/include/git2/errors.h
+cargo:rerun-if-changed=libgit2/include/git2/message.h
+cargo:rerun-if-changed=libgit2/include/git2/merge.h
+cargo:rerun-if-changed=libgit2/include/git2/pathspec.h
+cargo:rerun-if-changed=libgit2/include/git2/tree.h
+cargo:rerun-if-changed=libgit2/include/git2/odb_backend.h
+cargo:rerun-if-changed=libgit2/include/git2/graph.h
+cargo:rerun-if-changed=libgit2/include/git2/describe.h
+cargo:rerun-if-changed=libgit2/include/git2/rebase.h
+cargo:rerun-if-changed=libgit2/include/git2/worktree.h
+cargo:rerun-if-changed=libgit2/include/git2/stash.h
+cargo:rerun-if-changed=libgit2/include/git2/remote.h
+cargo:rerun-if-changed=libgit2/include/git2/strarray.h
+cargo:rerun-if-changed=libgit2/include/git2/reflog.h
+cargo:rerun-if-changed=libgit2/include/git2/cred_helpers.h
+cargo:rerun-if-changed=libgit2/include/git2/buffer.h
+cargo:rerun-if-changed=libgit2/include/git2/diff.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/index.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/email.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/config.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/path.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/repository.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/openssl.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/midx.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/cred.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/merge.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/stream.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/odb_backend.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/remote.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/reflog.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/diff.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/commit_graph.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/transport.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/hashsig.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/credential.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/refs.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/filter.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/alloc.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/mempack.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/commit.h
+cargo:rerun-if-changed=libgit2/include/git2/sys/refdb_backend.h
+cargo:rerun-if-changed=libgit2/include/git2/trace.h
+cargo:rerun-if-changed=libgit2/include/git2/common.h
+cargo:rerun-if-changed=libgit2/include/git2/proxy.h
+cargo:rerun-if-changed=libgit2/include/git2/indexer.h
+cargo:rerun-if-changed=libgit2/include/git2/refspec.h
+cargo:rerun-if-changed=libgit2/include/git2/notes.h
+cargo:rerun-if-changed=libgit2/include/git2/cert.h
+cargo:rerun-if-changed=libgit2/include/git2/deprecated.h
+cargo:rerun-if-changed=libgit2/include/git2/transport.h
+cargo:rerun-if-changed=libgit2/include/git2/revwalk.h
+cargo:rerun-if-changed=libgit2/include/git2/patch.h
+cargo:rerun-if-changed=libgit2/include/git2/object.h
+cargo:rerun-if-changed=libgit2/include/git2/checkout.h
+cargo:rerun-if-changed=libgit2/include/git2/apply.h
+cargo:rerun-if-changed=libgit2/include/git2/revparse.h
+cargo:rerun-if-changed=libgit2/include/git2/credential_helpers.h
+cargo:rerun-if-changed=libgit2/include/git2/credential.h
+cargo:rerun-if-changed=libgit2/include/git2/refs.h
+cargo:rerun-if-changed=libgit2/include/git2/reset.h
+cargo:rerun-if-changed=libgit2/include/git2/filter.h
+cargo:rerun-if-changed=libgit2/include/git2/transaction.h
+cargo:rerun-if-changed=libgit2/include/git2/stdint.h
+cargo:rerun-if-changed=libgit2/include/git2/commit.h
+cargo:rerun-if-changed=libgit2/include/git2/refdb.h
+cargo:rerun-if-changed=libgit2/src/cc-compat.h
+cargo:rerun-if-changed=libgit2/src/futils.h
+cargo:rerun-if-changed=libgit2/src/features.h.in
+cargo:rerun-if-changed=libgit2/src/commit_graph.c
+cargo:rerun-if-changed=libgit2/src/signature.h
+cargo:rerun-if-changed=libgit2/src/commit_list.c
+cargo:rerun-if-changed=libgit2/src/merge_driver.c
+cargo:rerun-if-changed=libgit2/src/proxy.c
+cargo:rerun-if-changed=libgit2/src/varint.h
+cargo:rerun-if-changed=libgit2/src/zstream.h
+cargo:rerun-if-changed=libgit2/src/oid.h
+cargo:rerun-if-changed=libgit2/src/index.h
+cargo:rerun-if-changed=libgit2/src/email.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xdiffi.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xdiff.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xhistogram.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xprepare.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xutils.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xpatience.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xtypes.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xemit.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xinclude.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xdiffi.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xmerge.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xmacros.h
+cargo:rerun-if-changed=libgit2/src/xdiff/git-xdiff.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xutils.c
+cargo:rerun-if-changed=libgit2/src/xdiff/xprepare.h
+cargo:rerun-if-changed=libgit2/src/xdiff/xemit.c
+cargo:rerun-if-changed=libgit2/src/diff.c
+cargo:rerun-if-changed=libgit2/src/thread.c
+cargo:rerun-if-changed=libgit2/src/offmap.c
+cargo:rerun-if-changed=libgit2/src/diff_print.c
+cargo:rerun-if-changed=libgit2/src/trace.c
+cargo:rerun-if-changed=libgit2/src/ignore.h
+cargo:rerun-if-changed=libgit2/src/diff_xdiff.h
+cargo:rerun-if-changed=libgit2/src/fetch.c
+cargo:rerun-if-changed=libgit2/src/pack-objects.h
+cargo:rerun-if-changed=libgit2/src/strarray.c
+cargo:rerun-if-changed=libgit2/src/wildmatch.c
+cargo:rerun-if-changed=libgit2/src/attr.h
+cargo:rerun-if-changed=libgit2/src/reader.h
+cargo:rerun-if-changed=libgit2/src/fs_path.h
+cargo:rerun-if-changed=libgit2/src/trailer.c
+cargo:rerun-if-changed=libgit2/src/tsort.c
+cargo:rerun-if-changed=libgit2/src/reflog.c
+cargo:rerun-if-changed=libgit2/src/blame.h
+cargo:rerun-if-changed=libgit2/src/sysdir.h
+cargo:rerun-if-changed=libgit2/src/runtime.c
+cargo:rerun-if-changed=libgit2/src/remote.c
+cargo:rerun-if-changed=libgit2/src/oidarray.h
+cargo:rerun-if-changed=libgit2/src/pack.h
+cargo:rerun-if-changed=libgit2/src/transport.c
+cargo:rerun-if-changed=libgit2/src/revwalk.c
+cargo:rerun-if-changed=libgit2/src/odb.h
+cargo:rerun-if-changed=libgit2/src/pool.h
+cargo:rerun-if-changed=libgit2/src/rand.c
+cargo:rerun-if-changed=libgit2/src/object.c
+cargo:rerun-if-changed=libgit2/src/config_mem.c
+cargo:rerun-if-changed=libgit2/src/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/src/status.h
+cargo:rerun-if-changed=libgit2/src/patch.c
+cargo:rerun-if-changed=libgit2/src/attr_file.h
+cargo:rerun-if-changed=libgit2/src/net.h
+cargo:rerun-if-changed=libgit2/src/tag.h
+cargo:rerun-if-changed=libgit2/src/util.c
+cargo:rerun-if-changed=libgit2/src/notes.c
+cargo:rerun-if-changed=libgit2/src/annotated_commit.h
+cargo:rerun-if-changed=libgit2/src/posix.c
+cargo:rerun-if-changed=libgit2/src/map.h
+cargo:rerun-if-changed=libgit2/src/config.h
+cargo:rerun-if-changed=libgit2/src/settings.h
+cargo:rerun-if-changed=libgit2/src/idxmap.c
+cargo:rerun-if-changed=libgit2/src/indexer.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/generic.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/mbedtls.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/common_crypto.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/openssl.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/sha1dc/ubc_check.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/sha1dc/sha1.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/sha1dc/sha1.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/sha1dc/ubc_check.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/collisiondetect.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/win32.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/mbedtls.h
+cargo:rerun-if-changed=libgit2/src/hash/sha1/generic.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/common_crypto.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/openssl.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/win32.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1/collisiondetect.c
+cargo:rerun-if-changed=libgit2/src/hash/sha1.h
+cargo:rerun-if-changed=libgit2/src/path.h
+cargo:rerun-if-changed=libgit2/src/branch.h
+cargo:rerun-if-changed=libgit2/src/repository.h
+cargo:rerun-if-changed=libgit2/src/refspec.c
+cargo:rerun-if-changed=libgit2/src/ident.c
+cargo:rerun-if-changed=libgit2/src/repo_template.h
+cargo:rerun-if-changed=libgit2/src/diff_file.c
+cargo:rerun-if-changed=libgit2/src/clone.h
+cargo:rerun-if-changed=libgit2/src/netops.c
+cargo:rerun-if-changed=libgit2/src/refdb_fs.c
+cargo:rerun-if-changed=libgit2/src/push.c
+cargo:rerun-if-changed=libgit2/src/diff_driver.h
+cargo:rerun-if-changed=libgit2/src/tree-cache.c
+cargo:rerun-if-changed=libgit2/src/vector.c
+cargo:rerun-if-changed=libgit2/src/blob.h
+cargo:rerun-if-changed=libgit2/src/diff_tform.h
+cargo:rerun-if-changed=libgit2/src/patch_parse.h
+cargo:rerun-if-changed=libgit2/src/streams/mbedtls.c
+cargo:rerun-if-changed=libgit2/src/streams/tls.h
+cargo:rerun-if-changed=libgit2/src/streams/openssl.h
+cargo:rerun-if-changed=libgit2/src/streams/stransport.h
+cargo:rerun-if-changed=libgit2/src/streams/openssl_dynamic.c
+cargo:rerun-if-changed=libgit2/src/streams/socket.c
+cargo:rerun-if-changed=libgit2/src/streams/registry.h
+cargo:rerun-if-changed=libgit2/src/streams/openssl_legacy.c
+cargo:rerun-if-changed=libgit2/src/streams/mbedtls.h
+cargo:rerun-if-changed=libgit2/src/streams/tls.c
+cargo:rerun-if-changed=libgit2/src/streams/openssl.c
+cargo:rerun-if-changed=libgit2/src/streams/openssl_legacy.h
+cargo:rerun-if-changed=libgit2/src/streams/socket.h
+cargo:rerun-if-changed=libgit2/src/streams/registry.c
+cargo:rerun-if-changed=libgit2/src/streams/stransport.c
+cargo:rerun-if-changed=libgit2/src/streams/openssl_dynamic.h
+cargo:rerun-if-changed=libgit2/src/threadstate.h
+cargo:rerun-if-changed=libgit2/src/revparse.c
+cargo:rerun-if-changed=libgit2/src/midx.h
+cargo:rerun-if-changed=libgit2/src/diff_generate.c
+cargo:rerun-if-changed=libgit2/src/diff_stats.c
+cargo:rerun-if-changed=libgit2/src/delta.h
+cargo:rerun-if-changed=libgit2/src/checkout.c
+cargo:rerun-if-changed=libgit2/src/config_parse.c
+cargo:rerun-if-changed=libgit2/src/config_entries.h
+cargo:rerun-if-changed=libgit2/src/transports/ssh.c
+cargo:rerun-if-changed=libgit2/src/transports/httpclient.c
+cargo:rerun-if-changed=libgit2/src/transports/auth.c
+cargo:rerun-if-changed=libgit2/src/transports/http.h
+cargo:rerun-if-changed=libgit2/src/transports/auth_negotiate.c
+cargo:rerun-if-changed=libgit2/src/transports/credential.c
+cargo:rerun-if-changed=libgit2/src/transports/local.c
+cargo:rerun-if-changed=libgit2/src/transports/credential_helpers.c
+cargo:rerun-if-changed=libgit2/src/transports/auth_ntlm.c
+cargo:rerun-if-changed=libgit2/src/transports/smart.h
+cargo:rerun-if-changed=libgit2/src/transports/httpclient.h
+cargo:rerun-if-changed=libgit2/src/transports/ssh.h
+cargo:rerun-if-changed=libgit2/src/transports/smart_pkt.c
+cargo:rerun-if-changed=libgit2/src/transports/winhttp.c
+cargo:rerun-if-changed=libgit2/src/transports/auth_negotiate.h
+cargo:rerun-if-changed=libgit2/src/transports/http.c
+cargo:rerun-if-changed=libgit2/src/transports/auth.h
+cargo:rerun-if-changed=libgit2/src/transports/smart_protocol.c
+cargo:rerun-if-changed=libgit2/src/transports/auth_ntlm.h
+cargo:rerun-if-changed=libgit2/src/transports/git.c
+cargo:rerun-if-changed=libgit2/src/transports/smart.c
+cargo:rerun-if-changed=libgit2/src/parse.h
+cargo:rerun-if-changed=libgit2/src/apply.c
+cargo:rerun-if-changed=libgit2/src/strmap.h
+cargo:rerun-if-changed=libgit2/src/hashsig.c
+cargo:rerun-if-changed=libgit2/src/odb_mempack.c
+cargo:rerun-if-changed=libgit2/src/str.c
+cargo:rerun-if-changed=libgit2/src/mailmap.h
+cargo:rerun-if-changed=libgit2/src/filebuf.c
+cargo:rerun-if-changed=libgit2/src/pqueue.c
+cargo:rerun-if-changed=libgit2/src/config_cache.c
+cargo:rerun-if-changed=libgit2/src/submodule.h
+cargo:rerun-if-changed=libgit2/src/cache.h
+cargo:rerun-if-changed=libgit2/src/date.h
+cargo:rerun-if-changed=libgit2/src/assert_safe.h
+cargo:rerun-if-changed=libgit2/src/patch_generate.c
+cargo:rerun-if-changed=libgit2/src/errors.h
+cargo:rerun-if-changed=libgit2/src/refdb.c
+cargo:rerun-if-changed=libgit2/src/libgit2.h
+cargo:rerun-if-changed=libgit2/src/merge.h
+cargo:rerun-if-changed=libgit2/src/pathspec.h
+cargo:rerun-if-changed=libgit2/src/tree.h
+cargo:rerun-if-changed=libgit2/src/buf.h
+cargo:rerun-if-changed=libgit2/src/mwindow.h
+cargo:rerun-if-changed=libgit2/src/blame_git.h
+cargo:rerun-if-changed=libgit2/src/utf8.c
+cargo:rerun-if-changed=libgit2/src/commit.c
+cargo:rerun-if-changed=libgit2/src/fetchhead.c
+cargo:rerun-if-changed=libgit2/src/stream.h
+cargo:rerun-if-changed=libgit2/src/regexp.c
+cargo:rerun-if-changed=libgit2/src/iterator.c
+cargo:rerun-if-changed=libgit2/src/oidmap.c
+cargo:rerun-if-changed=libgit2/src/diff_parse.h
+cargo:rerun-if-changed=libgit2/src/sortedcache.h
+cargo:rerun-if-changed=libgit2/src/alloc.c
+cargo:rerun-if-changed=libgit2/src/hash.c
+cargo:rerun-if-changed=libgit2/src/filter.c
+cargo:rerun-if-changed=libgit2/src/reset.c
+cargo:rerun-if-changed=libgit2/src/refs.c
+cargo:rerun-if-changed=libgit2/src/odb_pack.c
+cargo:rerun-if-changed=libgit2/src/transaction.c
+cargo:rerun-if-changed=libgit2/src/attrcache.c
+cargo:rerun-if-changed=libgit2/src/worktree.h
+cargo:rerun-if-changed=libgit2/src/remote.h
+cargo:rerun-if-changed=libgit2/src/runtime.h
+cargo:rerun-if-changed=libgit2/src/sysdir.c
+cargo:rerun-if-changed=libgit2/src/blame.c
+cargo:rerun-if-changed=libgit2/src/pack.c
+cargo:rerun-if-changed=libgit2/src/oidarray.c
+cargo:rerun-if-changed=libgit2/src/khash.h
+cargo:rerun-if-changed=libgit2/src/attr.c
+cargo:rerun-if-changed=libgit2/src/wildmatch.h
+cargo:rerun-if-changed=libgit2/src/fetch.h
+cargo:rerun-if-changed=libgit2/src/diff_xdiff.c
+cargo:rerun-if-changed=libgit2/src/pack-objects.c
+cargo:rerun-if-changed=libgit2/src/reflog.h
+cargo:rerun-if-changed=libgit2/src/fs_path.c
+cargo:rerun-if-changed=libgit2/src/unix/realpath.c
+cargo:rerun-if-changed=libgit2/src/unix/map.c
+cargo:rerun-if-changed=libgit2/src/unix/posix.h
+cargo:rerun-if-changed=libgit2/src/unix/pthread.h
+cargo:rerun-if-changed=libgit2/src/reader.c
+cargo:rerun-if-changed=libgit2/src/userdiff.h
+cargo:rerun-if-changed=libgit2/src/thread.h
+cargo:rerun-if-changed=libgit2/src/diff.h
+cargo:rerun-if-changed=libgit2/src/email.c
+cargo:rerun-if-changed=libgit2/src/index.c
+cargo:rerun-if-changed=libgit2/src/ignore.c
+cargo:rerun-if-changed=libgit2/src/trace.h
+cargo:rerun-if-changed=libgit2/src/common.h
+cargo:rerun-if-changed=libgit2/src/offmap.h
+cargo:rerun-if-changed=libgit2/src/signature.c
+cargo:rerun-if-changed=libgit2/src/commit_graph.h
+cargo:rerun-if-changed=libgit2/src/futils.c
+cargo:rerun-if-changed=libgit2/src/odb_loose.c
+cargo:rerun-if-changed=libgit2/src/zstream.c
+cargo:rerun-if-changed=libgit2/src/oid.c
+cargo:rerun-if-changed=libgit2/src/proxy.h
+cargo:rerun-if-changed=libgit2/src/varint.c
+cargo:rerun-if-changed=libgit2/src/merge_driver.h
+cargo:rerun-if-changed=libgit2/src/commit_list.h
+cargo:rerun-if-changed=libgit2/src/indexer.h
+cargo:rerun-if-changed=libgit2/src/idxmap.h
+cargo:rerun-if-changed=libgit2/src/refspec.h
+cargo:rerun-if-changed=libgit2/src/repository.c
+cargo:rerun-if-changed=libgit2/src/branch.c
+cargo:rerun-if-changed=libgit2/src/path.c
+cargo:rerun-if-changed=libgit2/src/array.h
+cargo:rerun-if-changed=libgit2/src/notes.h
+cargo:rerun-if-changed=libgit2/src/config.c
+cargo:rerun-if-changed=libgit2/src/posix.h
+cargo:rerun-if-changed=libgit2/src/annotated_commit.c
+cargo:rerun-if-changed=libgit2/src/merge_file.c
+cargo:rerun-if-changed=libgit2/src/util.h
+cargo:rerun-if-changed=libgit2/src/tag.c
+cargo:rerun-if-changed=libgit2/src/net.c
+cargo:rerun-if-changed=libgit2/src/rand.h
+cargo:rerun-if-changed=libgit2/src/pool.c
+cargo:rerun-if-changed=libgit2/src/odb.c
+cargo:rerun-if-changed=libgit2/src/revwalk.h
+cargo:rerun-if-changed=libgit2/src/revert.c
+cargo:rerun-if-changed=libgit2/src/patch.h
+cargo:rerun-if-changed=libgit2/src/attr_file.c
+cargo:rerun-if-changed=libgit2/src/status.c
+cargo:rerun-if-changed=libgit2/src/config_snapshot.c
+cargo:rerun-if-changed=libgit2/src/object.h
+cargo:rerun-if-changed=libgit2/src/allocators/win32_leakcheck.c
+cargo:rerun-if-changed=libgit2/src/allocators/failalloc.h
+cargo:rerun-if-changed=libgit2/src/allocators/stdalloc.c
+cargo:rerun-if-changed=libgit2/src/allocators/win32_leakcheck.h
+cargo:rerun-if-changed=libgit2/src/allocators/stdalloc.h
+cargo:rerun-if-changed=libgit2/src/allocators/failalloc.c
+cargo:rerun-if-changed=libgit2/src/filebuf.h
+cargo:rerun-if-changed=libgit2/src/pqueue.h
+cargo:rerun-if-changed=libgit2/src/str.h
+cargo:rerun-if-changed=libgit2/src/mailmap.c
+cargo:rerun-if-changed=libgit2/src/cherrypick.c
+cargo:rerun-if-changed=libgit2/src/date.c
+cargo:rerun-if-changed=libgit2/src/cache.c
+cargo:rerun-if-changed=libgit2/src/submodule.c
+cargo:rerun-if-changed=libgit2/src/config_entries.c
+cargo:rerun-if-changed=libgit2/src/config_parse.h
+cargo:rerun-if-changed=libgit2/src/checkout.h
+cargo:rerun-if-changed=libgit2/src/delta.c
+cargo:rerun-if-changed=libgit2/src/diff_stats.h
+cargo:rerun-if-changed=libgit2/src/config_file.c
+cargo:rerun-if-changed=libgit2/src/object_api.c
+cargo:rerun-if-changed=libgit2/src/strmap.c
+cargo:rerun-if-changed=libgit2/src/apply.h
+cargo:rerun-if-changed=libgit2/src/parse.c
+cargo:rerun-if-changed=libgit2/src/crlf.c
+cargo:rerun-if-changed=libgit2/src/diff_tform.c
+cargo:rerun-if-changed=libgit2/src/bitvec.h
+cargo:rerun-if-changed=libgit2/src/strnlen.h
+cargo:rerun-if-changed=libgit2/src/blob.c
+cargo:rerun-if-changed=libgit2/src/diff_generate.h
+cargo:rerun-if-changed=libgit2/src/midx.c
+cargo:rerun-if-changed=libgit2/src/threadstate.c
+cargo:rerun-if-changed=libgit2/src/patch_parse.c
+cargo:rerun-if-changed=libgit2/src/win32/precompiled.c
+cargo:rerun-if-changed=libgit2/src/win32/error.h
+cargo:rerun-if-changed=libgit2/src/win32/win32-compat.h
+cargo:rerun-if-changed=libgit2/src/win32/thread.c
+cargo:rerun-if-changed=libgit2/src/win32/version.h
+cargo:rerun-if-changed=libgit2/src/win32/w32_util.c
+cargo:rerun-if-changed=libgit2/src/win32/utf-conv.c
+cargo:rerun-if-changed=libgit2/src/win32/findfile.c
+cargo:rerun-if-changed=libgit2/src/win32/posix_w32.c
+cargo:rerun-if-changed=libgit2/src/win32/w32_buffer.h
+cargo:rerun-if-changed=libgit2/src/win32/w32_leakcheck.c
+cargo:rerun-if-changed=libgit2/src/win32/w32_common.h
+cargo:rerun-if-changed=libgit2/src/win32/path_w32.h
+cargo:rerun-if-changed=libgit2/src/win32/dir.c
+cargo:rerun-if-changed=libgit2/src/win32/thread.h
+cargo:rerun-if-changed=libgit2/src/win32/error.c
+cargo:rerun-if-changed=libgit2/src/win32/precompiled.h
+cargo:rerun-if-changed=libgit2/src/win32/w32_util.h
+cargo:rerun-if-changed=libgit2/src/win32/map.c
+cargo:rerun-if-changed=libgit2/src/win32/posix.h
+cargo:rerun-if-changed=libgit2/src/win32/reparse.h
+cargo:rerun-if-changed=libgit2/src/win32/msvc-compat.h
+cargo:rerun-if-changed=libgit2/src/win32/findfile.h
+cargo:rerun-if-changed=libgit2/src/win32/git2.rc
+cargo:rerun-if-changed=libgit2/src/win32/utf-conv.h
+cargo:rerun-if-changed=libgit2/src/win32/w32_leakcheck.h
+cargo:rerun-if-changed=libgit2/src/win32/dir.h
+cargo:rerun-if-changed=libgit2/src/win32/path_w32.c
+cargo:rerun-if-changed=libgit2/src/win32/w32_buffer.c
+cargo:rerun-if-changed=libgit2/src/win32/mingw-compat.h
+cargo:rerun-if-changed=libgit2/src/netops.h
+cargo:rerun-if-changed=libgit2/src/clone.c
+cargo:rerun-if-changed=libgit2/src/diff_file.h
+cargo:rerun-if-changed=libgit2/src/vector.h
+cargo:rerun-if-changed=libgit2/src/tree-cache.h
+cargo:rerun-if-changed=libgit2/src/push.h
+cargo:rerun-if-changed=libgit2/src/diff_driver.c
+cargo:rerun-if-changed=libgit2/src/refs.h
+cargo:rerun-if-changed=libgit2/src/integer.h
+cargo:rerun-if-changed=libgit2/src/filter.h
+cargo:rerun-if-changed=libgit2/src/graph.c
+cargo:rerun-if-changed=libgit2/src/stash.c
+cargo:rerun-if-changed=libgit2/src/describe.c
+cargo:rerun-if-changed=libgit2/src/worktree.c
+cargo:rerun-if-changed=libgit2/src/rebase.c
+cargo:rerun-if-changed=libgit2/src/transaction.h
+cargo:rerun-if-changed=libgit2/src/attrcache.h
+cargo:rerun-if-changed=libgit2/src/iterator.h
+cargo:rerun-if-changed=libgit2/src/regexp.h
+cargo:rerun-if-changed=libgit2/src/hash.h
+cargo:rerun-if-changed=libgit2/src/sortedcache.c
+cargo:rerun-if-changed=libgit2/src/alloc.h
+cargo:rerun-if-changed=libgit2/src/oidmap.h
+cargo:rerun-if-changed=libgit2/src/diff_parse.c
+cargo:rerun-if-changed=libgit2/src/utf8.h
+cargo:rerun-if-changed=libgit2/src/config_backend.h
+cargo:rerun-if-changed=libgit2/src/blame_git.c
+cargo:rerun-if-changed=libgit2/src/buf.c
+cargo:rerun-if-changed=libgit2/src/mwindow.c
+cargo:rerun-if-changed=libgit2/src/fetchhead.h
+cargo:rerun-if-changed=libgit2/src/commit.h
+cargo:rerun-if-changed=libgit2/src/message.c
+cargo:rerun-if-changed=libgit2/src/errors.c
+cargo:rerun-if-changed=libgit2/src/refdb.h
+cargo:rerun-if-changed=libgit2/src/patch_generate.h
+cargo:rerun-if-changed=libgit2/src/tree.c
+cargo:rerun-if-changed=libgit2/src/pathspec.c
+cargo:rerun-if-changed=libgit2/src/libgit2.c
+cargo:rerun-if-changed=libgit2/src/merge.c
+cargo:rerun-if-changed=libgit2/deps/http-parser/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/http-parser/http_parser.h
+cargo:rerun-if-changed=libgit2/deps/http-parser/COPYING
+cargo:rerun-if-changed=libgit2/deps/http-parser/http_parser.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_mbedtls.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/ntlm.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/unicode_iconv.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/unicode_builtin.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/util.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/ntlmclient.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_commoncrypto.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_openssl.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_mbedtls.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/unicode_iconv.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/ntlm.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/unicode.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/util.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/compat.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/unicode_builtin.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_openssl.h
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/crypt_commoncrypto.c
+cargo:rerun-if-changed=libgit2/deps/ntlmclient/utf8.h
+cargo:rerun-if-changed=libgit2/deps/zlib/zutil.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inftrees.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inflate.c
+cargo:rerun-if-changed=libgit2/deps/zlib/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/zlib/deflate.c
+cargo:rerun-if-changed=libgit2/deps/zlib/inffixed.h
+cargo:rerun-if-changed=libgit2/deps/zlib/trees.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inffast.h
+cargo:rerun-if-changed=libgit2/deps/zlib/crc32.c
+cargo:rerun-if-changed=libgit2/deps/zlib/infback.c
+cargo:rerun-if-changed=libgit2/deps/zlib/COPYING
+cargo:rerun-if-changed=libgit2/deps/zlib/zutil.c
+cargo:rerun-if-changed=libgit2/deps/zlib/deflate.h
+cargo:rerun-if-changed=libgit2/deps/zlib/gzguts.h
+cargo:rerun-if-changed=libgit2/deps/zlib/zlib.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inflate.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inftrees.c
+cargo:rerun-if-changed=libgit2/deps/zlib/trees.c
+cargo:rerun-if-changed=libgit2/deps/zlib/crc32.h
+cargo:rerun-if-changed=libgit2/deps/zlib/inffast.c
+cargo:rerun-if-changed=libgit2/deps/zlib/adler32.c
+cargo:rerun-if-changed=libgit2/deps/zlib/zconf.h
+cargo:rerun-if-changed=libgit2/deps/winhttp/COPYING.LGPL
+cargo:rerun-if-changed=libgit2/deps/winhttp/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/winhttp/winhttp.h
+cargo:rerun-if-changed=libgit2/deps/winhttp/winhttp.def
+cargo:rerun-if-changed=libgit2/deps/winhttp/COPYING.GPL
+cargo:rerun-if-changed=libgit2/deps/winhttp/urlmon.h
+cargo:rerun-if-changed=libgit2/deps/winhttp/winhttp64.def
+cargo:rerun-if-changed=libgit2/deps/chromium-zlib/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_compile.c
+cargo:rerun-if-changed=libgit2/deps/pcre/ucp.h
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_xclass.c
+cargo:rerun-if-changed=libgit2/deps/pcre/CMakeLists.txt
+cargo:rerun-if-changed=libgit2/deps/pcre/pcreposix.h
+cargo:rerun-if-changed=libgit2/deps/pcre/cmake/COPYING-CMAKE-SCRIPTS
+cargo:rerun-if-changed=libgit2/deps/pcre/cmake/FindEditline.cmake
+cargo:rerun-if-changed=libgit2/deps/pcre/cmake/FindPackageHandleStandardArgs.cmake
+cargo:rerun-if-changed=libgit2/deps/pcre/cmake/FindReadline.cmake
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_ucd.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_byte_order.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_jit_compile.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_get.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_printint.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_exec.c
+cargo:rerun-if-changed=libgit2/deps/pcre/config.h.in
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_tables.c
+cargo:rerun-if-changed=libgit2/deps/pcre/COPYING
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_string_utils.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre.h
+cargo:rerun-if-changed=libgit2/deps/pcre/pcreposix.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_version.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_study.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_newline.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_refcount.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_maketables.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_config.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_fullinfo.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_dfa_exec.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_globals.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_internal.h
+cargo:rerun-if-changed=libgit2/deps/pcre/LICENCE
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_ord2utf8.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_valid_utf8.c
+cargo:rerun-if-changed=libgit2/deps/pcre/pcre_chartables.c
