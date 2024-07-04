@@ -1,0 +1,21 @@
+{
+  "image_name": "ubuntu:latest",
+  "layers": [
+    {
+      "fs_hash": "sha256:aac3af10edc6612ad169ab9f9267dbe90e421f650a089ddc3f63546d9aacb3ed",
+      "files_analyzed": false,
+      "os_guess": "",
+      "pkg_format": "",
+      "extension_info": {},
+      "packages": [],
+      "notices": [
+        {
+          "message": "Error executing command: No such file or directory (os error 2)",
+          "level": "error"
+        }
+      ],
+      "analyzed_output": ""
+    }
+  ],
+  "signature": null
+}

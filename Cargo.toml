@@ -4,10 +4,19 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = { version = "4.0.10", features = ["derive"] }
+clap = { version = "4.5.8", features = ["derive"] }
 bollard = "0.16.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
 futures-util = "0.3"
 git2 = "0.19.0"
+ring = "0.17.8"
+base64 = "0.22.1"
+data-encoding = "2.6.0"
+dockerfile = "0.2.1" 
+dockerfile-parser = "0.8.0"
+tar = "0.4.41"
+hyper = { version = "1.4.0", features = ["full"] }
+bytes = "1.6.0"
+tokio-tungstenite = "0.23.1"

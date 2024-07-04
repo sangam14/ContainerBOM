@@ -1,202 +1,363 @@
+use std::collections::HashMap;
+use std::fs::{self, File};
+use std::io::Write;
+use std::path::Path;
 use clap::{Arg, Command};
 use bollard::Docker;
-use bollard::image::CreateImageOptions;
+use bollard::image::{CreateImageOptions, BuildImageOptions};
+use bollard::models::BuildInfo;
 use futures_util::stream::StreamExt;
-use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::fs;
-use tokio;
-use std::process::Command as StdCommand;
-use std::io;
+use tokio::runtime::Runtime;
+use serde::{Serialize, Deserialize};
+use ring::signature::{Ed25519KeyPair, KeyPair, ED25519};
+use ring::rand::SystemRandom;
+use data_encoding::BASE64;
+use dockerfile_parser::{Dockerfile, Instruction};
+use tar::Builder;
+use hyper::body::Bytes;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Debug, Serialize, Deserialize)]
+struct Layer {
+    files_analyzed: bool,
+    os_guess: String,
+    pkg_format: String,
+    packages: Vec<String>,
+    notices: Vec<Notice>,
+    analyzed_output: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 struct Notice {
     message: String,
     level: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-struct Layer {
-    fs_hash: String,
-    files_analyzed: bool,
-    os_guess: String,
-    pkg_format: String,
-    extension_info: HashMap<String, String>,
-    packages: Vec<String>, // Simplified for this example
-    notices: Vec<Notice>,
-    analyzed_output: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 struct Sbom {
     image_name: String,
     layers: Vec<Layer>,
+    dockerfile_analysis: Option<DockerfileAnalysis>,
+    signature: Option<String>,
 }
 
-#[tokio::main]
-async fn main() {
+#[derive(Debug, Serialize, Deserialize)]
+struct DockerfileAnalysis {
+    envs: HashMap<String, String>,
+    instructions: Vec<String>,
+    packages: Vec<String>,
+}
+
+fn main() {
     let matches = Command::new("Container SBOM")
         .version("1.0")
         .author("Your Name <you@example.com>")
         .about("CLI tool to generate SBOM for Docker images")
-        .arg(
-            Arg::new("IMAGE")
-                .help("Docker image to analyze")
-                .required(true)
-                .index(1),
+        .subcommand(
+            Command::new("generate-key")
+                .about("Generate a new Ed25519 keypair")
+                .arg(
+                    Arg::new("output")
+                        .short('o')
+                        .long("output")
+                        .value_name("FILE")
+                        .help("Output file for the keypair")
+                        .value_parser(clap::value_parser!(String))
+                        .required(true),
+                ),
         )
-        .arg(
-            Arg::new("output")
-                .short('o')
-                .long("output")
-                .value_name("FILE")
-                .help("Output file for the SBOM"),
+        .subcommand(
+            Command::new("analyze")
+                .about("Analyze a Docker image and generate SBOM")
+                .arg(
+                    Arg::new("IMAGE")
+                        .help("Docker image to analyze")
+                        .required(true)
+                        .index(1),
+                )
+                .arg(
+                    Arg::new("output")
+                        .short('o')
+                        .long("output")
+                        .value_name("FILE")
+                        .help("Output file for the SBOM")
+                        .value_parser(clap::value_parser!(String)),
+                )
+                .arg(
+                    Arg::new("dockerfile")
+                        .short('d')
+                        .long("dockerfile")
+                        .value_name("FILE")
+                        .help("Dockerfile to analyze and build")
+                        .value_parser(clap::value_parser!(String)),
+                )
+                .arg(
+                    Arg::new("build")
+                        .short('b')
+                        .long("build")
+                        .help("Build Docker image from Dockerfile")
+                        .action(clap::ArgAction::SetTrue),
+                )
+                .arg(
+                    Arg::new("tag")
+                        .short('t')
+                        .long("tag")
+                        .value_name("NAME")
+                        .help("Tag for the Docker image")
+                        .value_parser(clap::value_parser!(String)),
+                )
+                .arg(
+                    Arg::new("sign")
+                        .short('s')
+                        .long("sign")
+                        .value_name("KEY")
+                        .help("Sign the SBOM with the given key")
+                        .value_parser(clap::value_parser!(String)),
+                )
+                .arg(
+                    Arg::new("verify")
+                        .short('v')
+                        .long("verify")
+                        .value_name("KEY")
+                        .help("Verify the SBOM with the given key")
+                        .value_parser(clap::value_parser!(String)),
+                ),
         )
         .get_matches();
 
-    let image_name = matches.get_one::<String>("IMAGE").unwrap();
-    let output_file = matches.get_one::<String>("output");
+    if let Some(matches) = matches.subcommand_matches("generate-key") {
+        let output_file = matches.get_one::<String>("output").unwrap();
+        let (_, pkcs8_bytes) = generate_keypair();
+        save_keypair_to_file(&pkcs8_bytes, output_file);
+        println!("Keypair saved to {}", output_file);
+    }
 
-    let mut sbom = Sbom {
-        image_name: image_name.to_string(),
-        layers: Vec::new(),
-    };
+    if let Some(matches) = matches.subcommand_matches("analyze") {
+        let image_name = matches.get_one::<String>("IMAGE").unwrap();
+        let output_file = matches.get_one::<String>("output");
+        let dockerfile_path = matches.get_one::<String>("dockerfile");
+        let build_image = matches.get_flag("build");
+        let tag_name = matches.get_one::<String>("tag").unwrap_or(image_name);
+        let sign_key = matches.get_one::<String>("sign");
+        let verify_key = matches.get_one::<String>("verify");
 
-    ensure_image_exists(image_name).await;
-    let layers = analyze_image(image_name).await;
-    sbom.layers = layers;
+        let rt = Runtime::new().unwrap();
+        rt.block_on(async {
+            let mut sbom = Sbom {
+                image_name: image_name.clone(),
+                layers: Vec::new(),
+                dockerfile_analysis: None,
+                signature: None,
+            };
 
-    if let Some(output) = output_file {
-        save_sbom_to_file(&sbom, output);
-    } else {
-        println!("{}", serde_json::to_string_pretty(&sbom).unwrap());
+            if build_image {
+                if let Some(dockerfile) = dockerfile_path {
+                    build_dockerfile_image(dockerfile, tag_name).await.unwrap();
+                } else {
+                    eprintln!("Dockerfile path is required to build an image.");
+                    return;
+                }
+            }
+
+            ensure_image_exists(image_name).await.unwrap();
+            let layers = analyze_image(image_name).await;
+            sbom.layers = layers;
+
+            if let Some(dockerfile) = dockerfile_path {
+                let dockerfile_analysis = analyze_dockerfile(dockerfile);
+                sbom.dockerfile_analysis = Some(dockerfile_analysis);
+            }
+
+            if let Some(key_path) = sign_key {
+                let key_pair = load_keypair_from_file(key_path);
+                let sbom_json = serde_json::to_string(&sbom).unwrap();
+                let signature = sign_data(&key_pair, sbom_json.as_bytes());
+                sbom.signature = Some(signature);
+            }
+
+            if let Some(output) = output_file {
+                save_sbom_to_file(&sbom, output);
+            } else {
+                println!("{}", serde_json::to_string_pretty(&sbom).unwrap());
+            }
+
+            if let Some(key_path) = verify_key {
+                if let Some(signature) = &sbom.signature {
+                    let key_pair = load_keypair_from_file(key_path);
+                    let sbom_json = serde_json::to_string(&sbom).unwrap();
+                    let public_key = key_pair.public_key().as_ref();
+                    if verify_signature(public_key, sbom_json.as_bytes(), signature) {
+                        println!("Signature verification succeeded.");
+                    } else {
+                        println!("Signature verification failed.");
+                    }
+                } else {
+                    println!("No signature found to verify.");
+                }
+            }
+        });
     }
 }
 
-async fn ensure_image_exists(image_name: &str) {
+async fn ensure_image_exists(image_name: &str) -> Result<(), bollard::errors::Error> {
     let docker = Docker::connect_with_local_defaults().unwrap();
 
-    let common_typos: HashMap<&str, &str> = [
-        ("ngnix", "nginx"),
-        // Add more common typos and corrections as needed
-    ]
-    .iter()
-    .cloned()
-    .collect();
-
-    let corrected_name = common_typos.get(image_name).unwrap_or(&image_name);
-
-    match docker.inspect_image(corrected_name).await {
-        Ok(_) => {
-            println!("Image {} already exists locally.", corrected_name);
-        }
+    match docker.inspect_image(image_name).await {
+        Ok(_) => Ok(()),
         Err(_) => {
-            println!(
-                "Image {} not found locally. Pulling from Docker registry...",
-                corrected_name
-            );
             let options = Some(CreateImageOptions {
-                from_image: (*corrected_name).to_string(),
+                from_image: image_name,
                 ..Default::default()
             });
-
             let mut stream = docker.create_image(options, None, None);
 
-            while let Some(progress) = stream.next().await {
-                match progress {
-                    Ok(progress) => {
-                        if let Some(status) = progress.status {
-                            println!("{}", status);
-                        }
-                    }
-                    Err(e) => {
-                        eprintln!("Error pulling image: {}", e);
-                        return;
-                    }
-                }
+            while let Some(result) = stream.next().await {
+                result?;
             }
+            Ok(())
         }
     }
 }
 
-async fn analyze_image(image_name: &str) -> Vec<Layer> {
+async fn build_dockerfile_image(dockerfile_path: &str, image_name: &str) -> Result<(), bollard::errors::Error> {
     let docker = Docker::connect_with_local_defaults().unwrap();
 
-    let common_typos: HashMap<&str, &str> = [
-        ("ngnix", "nginx"),
-        // Add more common typos and corrections as needed
+    let options = BuildImageOptions {
+        t: image_name.to_string(),
+        rm: true,
+        ..Default::default()
+    };
+
+    let tar_path = create_tarball(dockerfile_path)?;
+    let tar_file = fs::read(tar_path)?;
+    let body = Bytes::from(tar_file);
+
+    let mut stream = docker.build_image(options, None, Some(body));
+
+    while let Some(result) = stream.next().await {
+        match result {
+            Ok(BuildInfo { stream: Some(stream), error: None, .. }) => {
+                print!("{}", stream);
+            }
+            Ok(BuildInfo { error: Some(error), .. }) => {
+                eprintln!("Error building image: {}", error);
+                return Err(bollard::errors::Error::DockerResponseServerError {
+                    message: error,
+                    status_code: 500,
+                });
+            }
+            Ok(_) => {}
+            Err(e) => {
+                eprintln!("Error: {}", e);
+                return Err(e);
+            }
+        }
+    }
+    Ok(())
+}
+
+fn create_tarball(dockerfile_path: &str) -> Result<String, std::io::Error> {
+    let tar_path = "dockerfile.tar";
+    let file = File::create(tar_path)?;
+    let mut builder = Builder::new(file);
+
+    let dockerfile_name = Path::new(dockerfile_path)
+        .file_name()
+        .and_then(|name| name.to_str())
+        .unwrap_or("Dockerfile");
+
+    builder.append_path_with_name(dockerfile_path, dockerfile_name)?;
+    builder.finish()?;
+    Ok(tar_path.to_string())
+}
+
+async fn analyze_image(_image_name: &str) -> Vec<Layer> {
+    // Mock implementation, replace with actual logic to analyze image layers
+    vec![
+        Layer {
+            files_analyzed: true,
+            os_guess: "linux".to_string(),
+            pkg_format: "deb".to_string(),
+            packages: vec!["package1".to_string(), "package2".to_string()],
+            notices: vec![
+                Notice {
+                    message: "Example notice".to_string(),
+                    level: "info".to_string(),
+                },
+            ],
+            analyzed_output: "Example analysis output".to_string(),
+        },
     ]
-    .iter()
-    .cloned()
-    .collect();
+}
 
-    let corrected_name = common_typos.get(image_name).unwrap_or(&image_name);
+fn analyze_dockerfile(dockerfile_path: &str) -> DockerfileAnalysis {
+    let mut envs = HashMap::new();
+    let mut instructions = Vec::new();
+    let mut packages = Vec::new();
 
-    match docker.inspect_image(corrected_name).await {
-        Ok(image) => {
-            let mut layers = Vec::new();
-            if let Some(root_fs) = image.root_fs {
-                if let Some(layer_ids) = root_fs.layers {
-                    for layer_id in layer_ids.iter() {
-                        let layer = Layer {
-                            fs_hash: layer_id.clone(),
-                            files_analyzed: false,
-                            os_guess: String::new(),
-                            pkg_format: String::new(),
-                            extension_info: HashMap::new(),
-                            packages: Vec::new(),
-                            notices: Vec::new(),
-                            analyzed_output: String::new(),
-                        };
-                        // Here you can call analyze_layer or any other function to analyze the layer
-                        layers.push(layer);
+    let dockerfile_content = fs::read_to_string(dockerfile_path).expect("Unable to read Dockerfile");
+
+    let parser = Dockerfile::parse(dockerfile_content.as_str()).unwrap();
+
+    for inst in &parser.instructions {
+        match inst {
+            Instruction::Env(env_line) => {
+                let env_str = format!("{:?}", env_line);
+                for var in env_str.split_whitespace() {
+                    let parts: Vec<&str> = var.split('=').collect();
+                    if parts.len() == 2 {
+                        envs.insert(parts[0].to_string(), parts[1].to_string());
                     }
                 }
             }
-            return layers;
+            Instruction::Run(run_line) => {
+                let run_str = format!("{:?}", run_line);
+                for command in run_str.split("&&") {
+                    let pkgs = command.split_whitespace().map(|s| s.to_string()).collect::<Vec<String>>();
+                    packages.extend(pkgs);
+                }
+            }
+            _ => {}
         }
-        Err(e) => {
-            eprintln!("Error inspecting image: {}", e);
-            return Vec::new();
-        }
+        instructions.push(format!("{:?}", inst));
+    }
+
+    DockerfileAnalysis {
+        envs,
+        instructions,
+        packages,
     }
 }
 
-fn save_sbom_to_file(sbom: &Sbom, output_file: &str) {
-    let sbom_json = serde_json::to_string_pretty(sbom).expect("Unable to serialize SBOM");
-    fs::write(output_file, sbom_json).expect("Unable to write SBOM to file");
+fn generate_keypair() -> (Ed25519KeyPair, Vec<u8>) {
+    let rng = SystemRandom::new();
+    let pkcs8_bytes = Ed25519KeyPair::generate_pkcs8(&rng).unwrap();
+    let key_pair = Ed25519KeyPair::from_pkcs8(pkcs8_bytes.as_ref()).unwrap();
+    (key_pair, pkcs8_bytes.as_ref().to_vec())
 }
 
-fn execute_external_command(command: &str, is_sudo: bool) -> Result<String, io::Error> {
-    let cmd_list: Vec<&str> = command.split_whitespace().collect();
-    let mut cmd = StdCommand::new(cmd_list[0]);
-    if is_sudo {
-        cmd.arg("sudo");
-    }
-    for arg in &cmd_list[1..] {
-        cmd.arg(arg);
-    }
-
-    let output = cmd.output()?;
-    if !output.status.success() {
-        let err_msg = String::from_utf8_lossy(&output.stderr).to_string();
-        return Err(io::Error::new(io::ErrorKind::Other, err_msg));
-    }
-
-    Ok(String::from_utf8_lossy(&output.stdout).to_string())
+fn save_keypair_to_file(pkcs8_bytes: &[u8], file_path: &str) {
+    let mut file = File::create(file_path).expect("Unable to create file");
+    file.write_all(pkcs8_bytes).expect("Unable to write data");
 }
 
-fn analyze_layer(layer: &mut Layer, command: &str) {
-    match execute_external_command(command, false) {
-        Ok(output) => {
-            layer.analyzed_output = output;
-        }
-        Err(e) => {
-            let notice = Notice {
-                message: format!("Error executing command: {}", e),
-                level: "error".to_string(),
-            };
-            layer.notices.push(notice);
-        }
-    }
+fn load_keypair_from_file(file_path: &str) -> Ed25519KeyPair {
+    let key_data = fs::read(file_path).expect("Unable to read file");
+    Ed25519KeyPair::from_pkcs8(key_data.as_ref()).unwrap()
+}
+
+fn sign_data(key_pair: &Ed25519KeyPair, data: &[u8]) -> String {
+    let sig = key_pair.sign(data);
+    BASE64.encode(sig.as_ref())
+}
+
+fn save_sbom_to_file(sbom: &Sbom, file_path: &str) {
+    let sbom_json = serde_json::to_string_pretty(sbom).unwrap();
+    let mut file = File::create(file_path).expect("Unable to create file");
+    file.write_all(sbom_json.as_bytes()).expect("Unable to write data")
+}
+
+fn verify_signature(public_key: &[u8], data: &[u8], signature: &str) -> bool {
+    let sig_bytes = BASE64.decode(signature.as_bytes()).unwrap();
+    let peer_public_key = ring::signature::UnparsedPublicKey::new(&ED25519, public_key);
+    peer_public_key.verify(data, &sig_bytes).is_ok()
 }

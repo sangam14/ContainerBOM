@@ -2,14 +2,22 @@
   "image_name": "ubuntu:latest",
   "layers": [
     {
-      "fs_hash": "sha256:aac3af10edc6612ad169ab9f9267dbe90e421f650a089ddc3f63546d9aacb3ed",
-      "files_analyzed": false,
-      "os_guess": "",
-      "pkg_format": "",
-      "extension_info": {},
-      "packages": [],
-      "notices": [],
-      "analyzed_output": ""
+      "files_analyzed": true,
+      "os_guess": "linux",
+      "pkg_format": "deb",
+      "packages": [
+        "package1",
+        "package2"
+      ],
+      "notices": [
+        {
+          "message": "Example notice",
+          "level": "info"
+        }
+      ],
+      "analyzed_output": "Example analysis output"
     }
-  ]
+  ],
+  "dockerfile_analysis": null,
+  "signature": null
 }
