@@ -1,13 +1,40 @@
 {
+  "sbom_version": "1.0",
+  "spdx_id": "SPDXRef-DOCUMENT",
+  "name": "Example Container SBOM",
+  "namespace": "https://example.com/sbom",
+  "creation_info": {
+    "created": "2024-07-06T00:00:00Z",
+    "creators": [
+      "Tool: Container SBOM Generator v1.0",
+      "Organization: Example Org"
+    ]
+  },
   "image_name": "mydockerimagename",
+  "image_digest": "sha256:abc1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
   "layers": [
     {
-      "files_analyzed": true,
+      "layer_id": "sha256:layer1",
+      "created": "2024-07-06T00:00:00Z",
       "os_guess": "linux",
       "pkg_format": "deb",
       "packages": [
-        "package1",
-        "package2"
+        {
+          "name": "package1",
+          "version": "1.2.3",
+          "source": "https://example.com/package1",
+          "license": "MIT",
+          "vendor": "Example Vendor",
+          "checksum": "sha256:abc1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+        },
+        {
+          "name": "package2",
+          "version": "4.5.6",
+          "source": "https://example.com/package2",
+          "license": "Apache-2.0",
+          "vendor": "Another Vendor",
+          "checksum": "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abc"
+        }
       ],
       "notices": [
         {
@@ -21,11 +48,18 @@
   "dockerfile_analysis": {
     "envs": {},
     "instructions": [
-      "From(FromInstruction { span: (0, 10), image: SpannedString { span: (5, 10), content: \"nginx\" }, image_parsed: ImageRef { registry: None, image: \"nginx\", tag: None, hash: None }, index: 0, alias: None })",
-      "Misc(MiscInstruction { span: (11, 20), instruction: SpannedString { span: (11, 17), content: \"EXPOSE\" }, arguments: BreakableString { span: (17, 20), components: [String(SpannedString { span: (17, 20), content: \" 80\" })] } })",
-      "Cmd(CmdInstruction { span: (21, 55), expr: Exec(StringArray { span: (25, 55), elements: [SpannedString { span: (26, 33), content: \"nginx\" }, SpannedString { span: (35, 39), content: \"-g\" }, SpannedString { span: (41, 54), content: \"daemon off;\" }] }) })"
+      "From(FromInstruction { span: (0, 17), image: SpannedString { span: (5, 17), content: \"nginx:alpine\" }, image_parsed: ImageRef { registry: None, image: \"nginx\", tag: Some(\"alpine\"), hash: None }, index: 0, alias: None })",
+      "Copy(CopyInstruction { span: (18, 56), flags: [], sources: [SpannedString { span: (23, 33), content: \"index.html\" }], destination: SpannedString { span: (34, 56), content: \"/usr/share/nginx/html/\" } })"
     ],
     "packages": []
   },
-  "signature": null
+  "signature": "DYS9w58KgZ2kiwOac3tPLYm2DPoSCoNPuXN8HXZjn2ORyX18nWSLF3IJFOSEsDGN/1RjpVstimeyNmC1Zb4XDw==",
+  "metadata": {
+    "tool": "Container SBOM Generator",
+    "version": "1.0",
+    "authors": [
+      "Your Name <you@example.com>"
+    ],
+    "organization": "Example Org"
+  }
 }

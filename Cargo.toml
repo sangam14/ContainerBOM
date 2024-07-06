@@ -1,5 +1,5 @@
 [package]
-name = "containerbom"
+name = "cbom"
 version = "0.1.0"
 edition = "2021"
 
@@ -20,3 +20,9 @@ tar = "0.4.41"
 hyper = { version = "1.4.0", features = ["full"] }
 bytes = "1.6.0"
 tokio-tungstenite = "0.23.1"
+cyclonedx-rust = "0.1.2"
+cyclonedx-bom = "0.6.1"
+serde-xml-rs = "0.6.0"
+quick-xml = "0.35.0"
+se = "0.1.0"
+chrono = "0.4.38"
