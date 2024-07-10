@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fs::{self, File, read_dir};
-use std::io::{Read, Write, BufRead, BufReader}; // Import BufRead
+use std::io::{Read, Write, BufRead, BufReader};
 use std::path::Path;
 use clap::{Arg, Command};
 use bollard::Docker;
@@ -18,8 +18,10 @@ use hyper::body::Bytes;
 use tar::Archive;
 use sha2::{Sha256, Digest};
 use tempfile::tempdir;
+use prettytable::{Table, row}; // Removed unused `cell` import
+use indicatif::{ProgressBar, ProgressStyle};
 
-#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct Layer {
     layer_id: String,
     created: String,
@@ -31,7 +33,7 @@ struct Layer {
     analyzed_output: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct Package {
     name: String,
     version: String,
@@ -41,7 +43,7 @@ struct Package {
     checksum: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct FileMetadata {
     path: String,
     size: u64,
@@ -49,7 +51,7 @@ struct FileMetadata {
     checksum: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct Notice {
     message: String,
     level: String,
@@ -161,8 +163,8 @@ fn main() {
                         .short('f')
                         .long("format")
                         .value_name("FORMAT")
-                        .help("Output format: list, json, spdx")
-                        .value_parser(["list", "json", "spdx"])
+                        .help("Output format: list, json, spdx, table")
+                        .value_parser(["list", "json", "spdx", "table"])
                         .default_value("json"),
                 ),
         )
@@ -283,6 +285,9 @@ fn main() {
                         println!("{}", spdx_output);
                     }
                 },
+                "table" => {
+                    display_sbom_table(&sbom);
+                },
                 _ => unreachable!(),
             }
         });
@@ -335,9 +340,17 @@ async fn ensure_image_exists(image_name: &str) -> Result<(), bollard::errors::Er
             });
             let mut stream = docker.create_image(options, None, None);
 
+            let pb = ProgressBar::new(100);
+            pb.set_style(ProgressStyle::default_bar()
+                .template("{spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} ({eta})")
+                .expect("Error setting progress bar template")
+                .progress_chars("#>-"));
+
             while let Some(result) = stream.next().await {
                 result?;
+                pb.inc(1);
             }
+            pb.finish_with_message("Image download complete.");
             Ok(())
         }
     }
@@ -358,6 +371,12 @@ async fn build_dockerfile_image(dockerfile_path: &str, image_name: &str) -> Resu
 
     let mut stream = docker.build_image(options, None, Some(body));
 
+    let pb = ProgressBar::new(100);
+    pb.set_style(ProgressStyle::default_bar()
+        .template("{spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} ({eta})")
+        .expect("Error setting progress bar template")
+        .progress_chars("#>-"));
+
     while let Some(result) = stream.next().await {
         match result {
             Ok(BuildInfo { stream: Some(stream), error: None, .. }) => {
@@ -376,7 +395,9 @@ async fn build_dockerfile_image(dockerfile_path: &str, image_name: &str) -> Resu
                 return Err(e);
             }
         }
+        pb.inc(1);
     }
+    pb.finish_with_message("Image build complete.");
     Ok(())
 }
 
@@ -501,7 +522,7 @@ fn analyze_layer_for_packages(layer_path: &Path) -> Vec<Package> {
             checksum: String::new(),
         };
 
-        for line in reader.lines() { // Use BufRead trait for lines method
+        for line in reader.lines() {
             let line = line.unwrap();
             if line.starts_with("P:") {
                 package.name = line[2..].to_string();
@@ -515,7 +536,7 @@ fn analyze_layer_for_packages(layer_path: &Path) -> Vec<Package> {
                 package.source = line[2..].to_string();
             } else if line.is_empty() {
                 if !package.name.is_empty() {
-                    packages.push(package.clone()); // Clone the package
+                    packages.push(package.clone());
                 }
             }
         }
@@ -643,4 +664,56 @@ fn generate_spdx(sbom: &Sbom) -> String {
         }
     }
     spdx
+}
+
+fn display_sbom_table(sbom: &Sbom) {
+    let mut table = Table::new();
+    table.add_row(row!["Field", "Value"]);
+    table.add_row(row!["SBOM Version", &sbom.sbom_version]);
+    table.add_row(row!["SPDX ID", &sbom.spdx_id]);
+    table.add_row(row!["Name", &sbom.name]);
+    table.add_row(row!["Namespace", &sbom.namespace]);
+    table.add_row(row!["Created", &sbom.creation_info.created]);
+    table.add_row(row!["Creators", &sbom.creation_info.creators.join(", ")]);
+    table.add_row(row!["Image Name", &sbom.image_name]);
+    table.add_row(row!["Image Digest", &sbom.image_digest]);
+
+    for (i, layer) in sbom.layers.iter().enumerate() {
+        table.add_row(row![format!("Layer {}", i + 1), ""]);
+        table.add_row(row!["  Layer ID", &layer.layer_id]);
+        table.add_row(row!["  Created", &layer.created]);
+        table.add_row(row!["  OS Guess", &layer.os_guess]);
+        table.add_row(row!["  Package Format", &layer.pkg_format]);
+
+        table.add_row(row!["  Packages", ""]);
+        for package in &layer.packages {
+            table.add_row(row!["    Name", &package.name]);
+            table.add_row(row!["    Version", &package.version]);
+            table.add_row(row!["    Source", &package.source]);
+            table.add_row(row!["    License", &package.license]);
+            table.add_row(row!["    Vendor", &package.vendor]);
+            table.add_row(row!["    Checksum", &package.checksum]);
+        }
+
+        table.add_row(row!["  Files", ""]);
+        for file in &layer.files {
+            table.add_row(row!["    Path", &file.path]);
+            table.add_row(row!["    Size", file.size.to_string()]);
+            table.add_row(row!["    File Type", &file.file_type]);
+            table.add_row(row!["    Checksum", &file.checksum]);
+        }
+
+        table.add_row(row!["  Notices", ""]);
+        for notice in &layer.notices {
+            table.add_row(row!["    Message", &notice.message]);
+            table.add_row(row!["    Level", &notice.level]);
+        }
+
+        table.add_row(row!["  Analyzed Output", &layer.analyzed_output]);
+    }
+
+    table.add_row(row!["Dockerfile Analysis", &sbom.dockerfile_analysis.is_some().to_string()]);
+    table.add_row(row!["Signature", &sbom.signature.clone().unwrap_or_else(|| "None".to_string())]);
+
+    table.printstd();
 }
