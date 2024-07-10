@@ -1,11 +1,11 @@
 use std::collections::HashMap;
 use std::fs::{self, File, read_dir};
-use std::io::{Read, Write};
+use std::io::{Read, Write, BufRead, BufReader}; // Import BufRead
 use std::path::Path;
 use clap::{Arg, Command};
 use bollard::Docker;
 use bollard::image::{CreateImageOptions, BuildImageOptions};
-use bollard::models::BuildInfo;
+use bollard::models::{BuildInfo, ImageInspect};
 use futures_util::stream::StreamExt;
 use tokio::runtime::Runtime;
 use serde::{Serialize, Deserialize};
@@ -15,19 +15,23 @@ use data_encoding::BASE64;
 use dockerfile_parser::{Dockerfile, Instruction, ShellOrExecExpr};
 use tar::Builder;
 use hyper::body::Bytes;
+use tar::Archive;
+use sha2::{Sha256, Digest};
+use tempfile::tempdir;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
 struct Layer {
     layer_id: String,
     created: String,
     os_guess: String,
     pkg_format: String,
     packages: Vec<Package>,
+    files: Vec<FileMetadata>,
     notices: Vec<Notice>,
     analyzed_output: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
 struct Package {
     name: String,
     version: String,
@@ -37,7 +41,15 @@ struct Package {
     checksum: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
+struct FileMetadata {
+    path: String,
+    size: u64,
+    file_type: String,
+    checksum: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)] // Derive Clone
 struct Notice {
     message: String,
     level: String,
@@ -394,32 +406,69 @@ fn create_tarball(dockerfile_path: &str) -> Result<String, std::io::Error> {
     Ok(tar_path.to_string())
 }
 
-async fn analyze_image(_image_name: &str) -> Vec<Layer> {
-    // Mock implementation, replace with actual logic to analyze image layers
-    vec![
-        Layer {
-            layer_id: "sha256:layer1".to_string(), // Mocked value
-            created: "2024-07-06T00:00:00Z".to_string(), // Mocked value
-            os_guess: "linux".to_string(),
-            pkg_format: "deb".to_string(),
-            packages: vec![
-                Package {
-                    name: "package1".to_string(),
-                    version: "1.2.3".to_string(),
-                    source: "https://example.com/package1".to_string(),
-                    license: "MIT".to_string(),
-                    vendor: "Example Vendor".to_string(),
-                    checksum: "sha256:abc1234567890abcdef1234567890abcdef1234567890abcdef1234567890".to_string(),
-                },
-                Package {
-                    name: "package2".to_string(),
-                    version: "4.5.6".to_string(),
-                    source: "https://example.com/package2".to_string(),
-                    license: "Apache-2.0".to_string(),
-                    vendor: "Another Vendor".to_string(),
-                    checksum: "sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abc".to_string(),
-                },
-            ],
+async fn analyze_image(image_name: &str) -> Vec<Layer> {
+    let docker = Docker::connect_with_local_defaults().unwrap();
+    let image_inspect: ImageInspect = docker.inspect_image(image_name).await.unwrap();
+
+    let layers = image_inspect.root_fs.unwrap().layers.unwrap_or_default();
+    let mut analyzed_layers = Vec::new();
+
+    let temp_dir = tempdir().unwrap();
+    for layer in layers {
+        let layer_id = layer.clone();
+        let created = image_inspect.created.clone().unwrap_or_else(|| "Unknown".to_string());
+        let os_guess = image_inspect.os.clone().unwrap_or_else(|| "Unknown".to_string());
+
+        let tarball_path = temp_dir.path().join(format!("{}.tar", layer_id));
+        let mut tarball_file = File::create(&tarball_path).unwrap();
+
+        let mut export_stream = docker.export_image(image_name);
+        while let Some(chunk) = export_stream.next().await {
+            match chunk {
+                Ok(bytes) => tarball_file.write_all(&bytes).unwrap(),
+                Err(e) => eprintln!("Error exporting image: {}", e),
+            }
+        }
+
+        let tar_file = File::open(&tarball_path).unwrap();
+        let mut archive = Archive::new(tar_file);
+
+        let mut files = Vec::new();
+        for file in archive.entries().unwrap() {
+            let mut file = file.unwrap();
+            let path = file.path().unwrap().display().to_string();
+            let size = file.size();
+            let file_type = match file.header().entry_type().is_file() {
+                true => "file".to_string(),
+                false => "dir".to_string(),
+            };
+
+            // Calculate file checksum (e.g., SHA256)
+            let mut hasher = Sha256::new();
+            let mut buffer = Vec::new();
+            file.read_to_end(&mut buffer).unwrap();
+            hasher.update(&buffer);
+            let checksum = format!("{:x}", hasher.finalize());
+
+            files.push(FileMetadata {
+                path,
+                size,
+                file_type,
+                checksum,
+            });
+        }
+
+        // Identify packages
+        let packages = analyze_layer_for_packages(&tarball_path);
+
+        // Perform analysis on each layer
+        let analyzed_layer = Layer {
+            layer_id: layer_id.clone(),
+            created,
+            os_guess,
+            pkg_format: "apk".to_string(), // Assuming Alpine package format
+            packages,
+            files,
             notices: vec![
                 Notice {
                     message: "Example notice".to_string(),
@@ -427,8 +476,52 @@ async fn analyze_image(_image_name: &str) -> Vec<Layer> {
                 },
             ],
             analyzed_output: "Example analysis output".to_string(),
-        },
-    ]
+        };
+
+        analyzed_layers.push(analyzed_layer);
+    }
+
+    analyzed_layers
+}
+
+fn analyze_layer_for_packages(layer_path: &Path) -> Vec<Package> {
+    let mut packages = Vec::new();
+
+    let apk_db_path = layer_path.join("lib/apk/db/installed");
+    if apk_db_path.exists() {
+        let file = File::open(apk_db_path).unwrap();
+        let reader = BufReader::new(file);
+
+        let mut package = Package {
+            name: String::new(),
+            version: String::new(),
+            source: String::new(),
+            license: String::new(),
+            vendor: String::new(),
+            checksum: String::new(),
+        };
+
+        for line in reader.lines() { // Use BufRead trait for lines method
+            let line = line.unwrap();
+            if line.starts_with("P:") {
+                package.name = line[2..].to_string();
+            } else if line.starts_with("V:") {
+                package.version = line[2..].to_string();
+            } else if line.starts_with("L:") {
+                package.license = line[2..].to_string();
+            } else if line.starts_with("o:") {
+                package.vendor = line[2..].to_string();
+            } else if line.starts_with("t:") {
+                package.source = line[2..].to_string();
+            } else if line.is_empty() {
+                if !package.name.is_empty() {
+                    packages.push(package.clone()); // Clone the package
+                }
+            }
+        }
+    }
+
+    packages
 }
 
 fn analyze_dockerfile(dockerfile_path: &str) -> DockerfileAnalysis {
